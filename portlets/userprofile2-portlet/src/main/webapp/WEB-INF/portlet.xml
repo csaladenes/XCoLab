@@ -19,8 +19,8 @@
 			<portlet-mode>edit</portlet-mode>
 		</supports>
 		<portlet-info>
-			<title>User Profile Portlet</title>
-			<short-title>Userprofile2</short-title>
+			<title>userprofile2 Portlet</title>
+			<short-title>userprofile2</short-title>
 			<keywords>userprofile2</keywords>
 		</portlet-info>
 		<security-role-ref>

@@ -8,12 +8,14 @@ import com.liferay.portal.model.User;
 import com.liferay.portal.util.PortalUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,8 +23,10 @@ import java.util.Map;
 @RequestMapping("view")
 public class UserProfileController {
     @RequestMapping
-    public String showProfileDetails(PortletRequest request, PortletResponse response, @RequestParam Map<String, String> requestParams, Model model) throws SystemException, PortalException {
+    public String showProfileDetails(@RequestParam(required = false) final String userId, PortletRequest request, PortletResponse response, Model model) throws SystemException, PortalException {
         User currentUser = PortalUtil.getUser(request);
+        Map<String,String> requestParams = new HashMap<>();
+        //requestParams.put("userId", userId.toString());
         UserProfileBean userProfileBean = new UserProfileBean(currentUser, requestParams);
         model.addAttribute("userProfileBean", userProfileBean);
         model.addAttribute("currentUser", userProfileBean.getCurrentUser());
